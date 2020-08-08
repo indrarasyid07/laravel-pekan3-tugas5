@@ -20,7 +20,7 @@
                       <th style="width: 10px">#</th>
                       <th>Judul</th>
                       <th>Body</th>
-                      <th style="width: 40px">Action</th>
+                      <th style="width: 80px">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -29,7 +29,15 @@
                         <td>{{$key+1}}</td>
                         <td>{{$pertanyaan1->judul}}</td>
                         <td>{{$pertanyaan1->isi}}</td>
-                        <td>Action</td>
+                        <td class="d-flex">
+                          <a href="/pertanyaan/{{$pertanyaan1->id}}" class="btn btn-info btn-sm ">show</a>
+                          <a href="/pertanyaan/{{$pertanyaan1->id}}/edit" class="btn btn-default btn-sm">edit</a>
+                          <form action="/pertanyaan/{{$pertanyaan1->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="delete" class="btn btn-danger btn-sm">
+                          </form>
+                        </td>
                     </tr>
                     @empty
                     <tr>
